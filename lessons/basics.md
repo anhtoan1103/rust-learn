@@ -18,7 +18,7 @@ This lesson teaches Rust basics in a simple, step-by-step way: short theory sect
 4. let a = 10;
 5. let mut b = 3;
    let b = b + 2;  
-    fmt.print!(b);
+   println!("{}", b);
 6. final s is 7
 
 ---
@@ -34,10 +34,10 @@ This lesson teaches Rust basics in a simple, step-by-step way: short theory sect
 2. Try `let c: char = '💡';` and print it.
 3. let n: i64 = 1000;
    let f: f64 = 2.5;  
-    fmt.print!(n);  
-    fmt.print!(f);
+   println!("{}", n);  
+   println!("{}", f);
 4. let c: char = '💡';
-   fmt.print!(c);
+   println!("{}", c);
 
 ---
 
@@ -52,12 +52,12 @@ This lesson teaches Rust basics in a simple, step-by-step way: short theory sect
 2. Write `fn square(x: i32) -> i32` that returns `x * x` and test it.
 3. fn add(a: i32, b: i32) -> i32 {
    a + b  
-    }  
-    add(2,3);
+   }  
+   println!("{}", add(2, 3));
 4. fn square(x: i32) -> i32 {
-   x \* x  
-    }  
-    square(5);
+   x * x  
+   }  
+   println!("{}", square(5));
 
 ---
 
@@ -71,21 +71,26 @@ This lesson teaches Rust basics in a simple, step-by-step way: short theory sect
 1. Create `let s = String::from("hello");` then call a function `takes(s);` that takes `String`. Try to use `s` after the call (what happens?).
 2. Modify the previous by calling `borrows(&s)` where `fn borrows(s: &String) {}` — can you use `s` afterward?
 
-3.
+1.
 
-```plaintext
+```rust
+fn takes(s: String) {
+    println!("{}", s);
+}
 let s = String::from("hello");
 takes(s);
-fmt.print!(s);
+println!("{}", s);  // This will error: s was moved
 ```
 
-9.
+2.
 
 ```
-fn borrows(s: &String) {};
+fn borrows(s: &str) {
+    println!("{}", s);
+}
 let s = String::from("hello");
-borrows(s);
-fmt.print!(s);
+borrows(&s);
+println!("{}", s);
 
 ```
 
@@ -96,10 +101,40 @@ fmt.print!(s);
 - `struct Point { x: i32, y: i32 }` groups data.
 - `enum Direction { Up, Down, Left, Right }` is a type with different variants.
 
+pub struct Point {
+   x: i32,
+   y: i32
+}
+
+pub enum Direction {
+   Up,
+   Down,
+   Left,
+   Right
+}
+
 ### Exercises
 
 1. Define `struct Point { x: i32, y: i32 }`, create a point `(3,4)`, and print `p.x` and `p.y`.
 2. Define `enum Light { Red, Yellow, Green }`. Match on a value and print which color it is.
+
+pub struct Point {
+   x: i32,
+   y: i32
+}
+let p = Point {x: 3, y: 4};
+println!("{}, {}", p.x, p.y);
+pub enum Light {
+   Red,
+   Yellow,
+   Green
+}
+let light = Light::Red;
+match light {
+   Light::Red => println!("Red"),
+   Light::Yellow => println!("Yellow"),
+   Light::Green => println!("Green"),
+}
 
 ---
 
@@ -111,7 +146,11 @@ fmt.print!(s);
 ### Exercises
 
 1. Create `let mut v = vec![1,2]; v.push(3);` then iterate by reference and print each item.
-
+let mut v = vec![1,2];
+v.push(3);
+for x in &v {
+   println!("{}", x);
+}
 ---
 
 ## Answers (check after trying)
