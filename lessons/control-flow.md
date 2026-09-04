@@ -187,6 +187,21 @@ use crate::math::add;
 println!("{}", add(10, 20));
 ```
 
+mod math {
+    pub fn multiply(a: i32, b: i32) -> i32 {
+        a * b
+    }
+}
+
+fn main() {
+    let a: i32 = math::multiply(3,4);
+}
+
+mod strings {
+    pub fn greeting() {
+        println!("hello world");
+    }
+}
 ### Exercises
 
 1. Create a `mod math` with `pub fn multiply(a: i32, b: i32) -> i32`.
@@ -197,6 +212,10 @@ println!("{}", add(10, 20));
 
 ## Quick challenge
 
+fn main() {
+    println!("input one number");
+    input
+}
 Write a tiny program that:
 
 - asks for a number
@@ -209,6 +228,8 @@ Write a tiny program that:
 ## Suggested next exercises
 
 After you finish the examples above, practice these three ideas:
+
+
 
 1. Make a function that returns a boolean.
 2. Use `match` with a small enum.
