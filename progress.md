@@ -6,7 +6,7 @@ Last updated: 2026-09-03
 
 - [x] Set up Rust toolchain
 - [x] Learn Rust basics (syntax, types, variables)
-- [ ] Control flow, functions, modules
+- [x] Control flow, functions, modules
 - [ ] Ownership, borrowing, lifetimes
 - [ ] Structs, enums, pattern matching
 - [ ] Collections, iterators, error handling
@@ -26,7 +26,8 @@ Last updated: 2026-09-03
 - 2026-08-25: Workspace cleaned. Archived files moved to `archive/` and only `progress.md` left at root.
 - 2026-08-25: Created lesson template and populated `lessons/basics.md` with theory + exercises.
 - 2026-09-03: Finished the Rust basics review and exercises; moving on to control flow, functions, and modules.
+- 2026-09-08: Started ownership, borrowing, and lifetimes in `lessons/ownership-borrowing-lifetimes.md`.
 
 ## Next
 
-- Next: Control flow, functions, and modules
+- Next: Ownership, borrowing, and lifetimes

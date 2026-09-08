@@ -4,7 +4,48 @@ This next part covers the building blocks you use in almost every Rust program: 
 
 ---
 
-## 1) if / else
+## 1) Reading input
+
+Use `std::io::stdin().read_line(...)` to read a line typed by the user. The input includes the newline, so call `trim()` before using it.
+
+```rust
+use std::io;
+
+fn main() {
+    println!("What is your name?");
+
+    let mut name = String::new();
+    io::stdin().read_line(&mut name).unwrap();
+
+    println!("Hello, {}!", name.trim());
+}
+```
+
+To read a number, parse the trimmed text into the type you need:
+
+```rust
+use std::io;
+
+fn main() {
+    println!("Enter a number:");
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+
+    let number: i32 = input.trim().parse().unwrap();
+    println!("You entered {number}");
+}
+```
+
+`read_line` and `parse` can fail, so they return a `Result`. `unwrap()` is convenient for small learning examples; later, handle errors with `match` or `?`.
+
+### Exercise
+
+Read a number from the user and print whether it is positive, negative, or zero.
+
+---
+
+## 2) if / else
 
 Rust uses `if` as an expression, so it can return a value.
 
@@ -124,7 +165,7 @@ x \* x
 }
 
 fn is_even(n: i32) -> bool {
-n % 2
+n % 2 == 0
 }
 
 fn greet(name: &str) {
@@ -153,6 +194,19 @@ match value {
 ```
 
 ### Exercises
+
+let value: u32 = 43;
+match value {
+1..=10 => println!("small),
+11..=50 => println!("medium"),
+\_ => println!("large"),
+}
+
+let value: char = "a";
+match value {
+'a' | 'u' | 'o' | 'e' | 'i' => println!("vowel"),
+\_ => println!("not vowel"),
+}
 
 1. Match on a `u32` and print whether it is small, medium, or large.
 2. Match on a `char` and print if it is a vowel.
@@ -204,6 +258,22 @@ mod strings {
 }
 ### Exercises
 
+mod math {
+pub fn multiply(a: i32, b: i32) -> i32 {
+a \* b
+}
+}
+
+fn main() {
+println!("{}", math::multiply(2,3));
+}
+
+mod strings {
+pub fn greeting() {
+println!("Hello moi nguoi");
+}
+}
+
 1. Create a `mod math` with `pub fn multiply(a: i32, b: i32) -> i32`.
 2. Call it from `main`.
 3. Create a second module, such as `mod strings`, and print a greeting from there.
@@ -218,6 +288,42 @@ fn main() {
 }
 Write a tiny program that:
 
+```rust
+use std::io;
+
+mod math {
+    pub fn is_even(a: i32) -> bool {
+        a % 2 == 0
+    }
+
+    pub fn print_to(a: i32) {
+        for i in 1..=a {
+            println!("{i}");
+        }
+    }
+    pub fn sum(a: i32) -> i32 {
+        let mut rs = 0;
+        for i in 1..=a {
+            rs += i;
+        }
+        rs
+    }
+}
+fn main() {
+
+    println!("Please input your number:");
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    let number: i32 = input.trim().parse().unwrap();
+    println!("{}", math::is_even(number));
+    math::print_to(number);
+    println!("{}", math::sum(number));
+    println!("You entered number {number}");
+}
+
+```
+
 - asks for a number
 - checks if it is even or odd
 - prints the numbers from 1 to that number
@@ -228,8 +334,44 @@ Write a tiny program that:
 ## Suggested next exercises
 
 After you finish the examples above, practice these three ideas:
+```rust
+pub fn is_even(a: i32) -> bool {
+    a % 2 == 0
+}
 
 
+enum Size {
+    Small,
+    Large,
+}
+let size = Size::Large;
+match size {
+    Size::Small => {
+        println!("small number");
+    },
+    _ => {
+        println!("big number");
+    },
+}
+
+mod math {
+    pub fn sum(a: i32, b: i32) -> i32 {
+        a + b
+    }
+    pub fn multiply(a: i32, b: i32) -> i32 {
+        a * b
+    }
+}
+
+mod print {
+    pub fn printl(a: char) {
+        println!("{a}\n");
+    }
+}
+
+math::sum(2,3);
+print::printl('a');
+```
 
 1. Make a function that returns a boolean.
 2. Use `match` with a small enum.
