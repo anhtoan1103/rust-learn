@@ -242,20 +242,21 @@ println!("{}", add(10, 20));
 ```
 
 mod math {
-    pub fn multiply(a: i32, b: i32) -> i32 {
-        a * b
-    }
+pub fn multiply(a: i32, b: i32) -> i32 {
+a \* b
+}
 }
 
 fn main() {
-    let a: i32 = math::multiply(3,4);
+let a: i32 = math::multiply(3,4);
 }
 
 mod strings {
-    pub fn greeting() {
-        println!("hello world");
-    }
+pub fn greeting() {
+println!("hello world");
 }
+}
+
 ### Exercises
 
 mod math {
@@ -283,8 +284,8 @@ println!("Hello moi nguoi");
 ## Quick challenge
 
 fn main() {
-    println!("input one number");
-    input
+println!("input one number");
+input
 }
 Write a tiny program that:
 
@@ -334,6 +335,7 @@ fn main() {
 ## Suggested next exercises
 
 After you finish the examples above, practice these three ideas:
+
 ```rust
 pub fn is_even(a: i32) -> bool {
     a % 2 == 0
