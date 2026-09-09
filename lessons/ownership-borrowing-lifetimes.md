@@ -129,14 +129,77 @@ Lifetime không làm dữ liệu sống lâu hơn; chúng chỉ giúp Rust kiể
 ## Exercises
 
 1. Tạo một `String`, move nó sang biến khác, và quan sát lỗi nếu dùng lại biến cũ.
+```rust
+let name = String::from("hello");
+let age = name;
+println!("{}", name);
+
+```
 2. Viết hàm nhận `&str` và trả về độ dài của chuỗi.
+
+```rust
+pub fn length(i: &str) -> usize {
+    i.len()
+}
+```
+
 3. Viết hàm nhận `&mut String` và thêm một ký tự vào chuỗi.
+
+```rust
+pub fn append(text: &mut String) {
+    text.push('1');
+}
+```
 4. Viết hàm `longer` trả về chuỗi dài hơn trong hai `&str`.
+```rust
+pub fn longer(str1: &str, str2: &str) -> &str {
+    if str1.len() > str2.len() {
+        str1
+    } else {
+        str2
+    }
+}
+```
 
 ## Suggested next exercises
 
 1. Viết hàm nhận `String` và trả ownership về caller.
+```rust
+pub fn owner(text: String) -> String {
+    text
+}
+```
 2. Sửa một đoạn code có lỗi borrow bằng cách dùng scope nhỏ hơn.
+```rust
+let text = String::from("hello");
+let text1 = &mut text;
+println!("{}", text);
+
+let text = String::from("hello");
+{
+    let text1 = &mut text;
+    text1.push('!');
+}
+
+println!("{}", text);
+```
 3. Tạo một struct chứa reference và thử thêm lifetime annotation.
+
+```rust
+struct NameRef<'a> {
+    value: &'a str,
+}
+
+impl <'a> NameRef<'a> {
+    fn as_str(&self) -> &str {
+        self.value
+    }
+}
+
+fn main() {
+    let name = String::from("Rust");
+    let ref_holder = NameRef { value: &name };
+    println!("{}", ref_holder.as_str());
+}
 
 Khi đã quen với ownership và borrowing, ta có thể chuyển sang structs, enums và pattern matching.

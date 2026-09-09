@@ -1,14 +1,14 @@
 # Rust Learning Progress
 
-Last updated: 2026-09-03
+Last updated: 2026-09-09
 
 ## Todo snapshot
 
-- [x] Set up Rust toolchain
-- [x] Learn Rust basics (syntax, types, variables)
-- [x] Control flow, functions, modules
-- [ ] Ownership, borrowing, lifetimes
-- [ ] Structs, enums, pattern matching
+- [x] Set up Rust toolchain (completed)
+- [x] Learn Rust basics (syntax, types, variables) (completed)
+- [x] Control flow, functions, modules (completed)
+- [x] Ownership, borrowing, lifetimes (completed)
+- [ ] Structs, enums, pattern matching (in-progress)
 - [ ] Collections, iterators, error handling
 - [ ] Traits, generics, and type system
 - [ ] Concurrency, threads, async
@@ -20,14 +20,15 @@ Last updated: 2026-09-03
 - Use this file to record brief progress notes and next actions.
 - When you finish a step, update the checkbox, date, and a one-line note.
 
-## Notes (recent)
-
+- ## Notes (recent)
+- 2026-09-09: Added the next lesson: `lessons/structs-enums-pattern-matching.md`.
+- 2026-09-09: Finished ownership, borrowing, and lifetimes notes.
+- 2026-09-03: Finished Rust basics lesson and pushed update to remote: `lessons/basics.md`.
 - 2026-08-25: Created lesson examples and notes: `src/basics.rs`, `lessons/basics.md`.
 - 2026-08-25: Workspace cleaned. Archived files moved to `archive/` and only `progress.md` left at root.
 - 2026-08-25: Created lesson template and populated `lessons/basics.md` with theory + exercises.
-- 2026-09-03: Finished the Rust basics review and exercises; moving on to control flow, functions, and modules.
-- 2026-09-08: Started ownership, borrowing, and lifetimes in `lessons/ownership-borrowing-lifetimes.md`.
 
 ## Next
 
-- Next: Ownership, borrowing, and lifetimes
+- Next: Structs, enums, and pattern matching
+- Focus: practice grouping data with structs and handling variants with `match`
